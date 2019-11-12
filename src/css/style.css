@@ -1,0 +1,37 @@
+/* ##### Import All CSS ##### */
+@import (less) 'variable.css';
+@import (less) 'mui.css';
+
+/* ##### Custom CSS ##### */
+a {
+  color: white;
+
+  &:hover {
+    color: #DDD;
+  }
+}
+
+body {
+  font-family: PingFangSC-Medium, PingFangSC;
+  width: 100%;
+  background: #FFF;
+
+  .header-area {
+    color: @text-warning;
+  }
+}
+
+.section-footer {
+  .copyright {
+    height: 19px;
+    font-size: 7px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(89, 89, 89, 1);
+    line-height: 12px;
+  }
+
+}
+
+/* ##### Import RESPONSIVE CSS ##### */
+@import (less) 'responsive.css';

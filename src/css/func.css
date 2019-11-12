@@ -1,0 +1,141 @@
+.mtfun(@counter) when (@counter < 200) {
+  .mt-@{counter} {
+    margin-top: unit(@counter, px);
+  }
+
+  .mtfun((@counter + 5)); // 递归调用自身
+}
+
+.mt(@counter) {
+  margin-top: unit(@counter, px);
+}
+
+.mlfun(@counter) when (@counter < 200) {
+  .ml-@{counter} {
+    margin-left: unit(@counter, px);
+  }
+
+  .mlfun((@counter + 5)); // 递归调用自身
+}
+
+.ml(@counter) {
+  margin-left: unit(@counter, px);
+}
+
+.mrfun(@counter) when (@counter < 200) {
+  .mr-@{counter} {
+    margin-right: unit(@counter, px);
+  }
+
+  .mrfun((@counter + 5)); // 递归调用自身
+}
+
+.mr(@counter) {
+  margin-right: unit(@counter, px);
+}
+
+.mbfun(@counter) when (@counter < 200) {
+  .mb-@{counter} {
+    margin-bottom: unit(@counter, px);
+  }
+
+  .mbfun((@counter + 5)); // 递归调用自身
+}
+
+.mb(@counter) {
+  margin-bottom: unit(@counter, px);
+}
+
+.ptfun(@counter) when (@counter < 200) {
+  .pt-@{counter} {
+    padding-top: unit(@counter, px);
+  }
+
+  .ptfun((@counter + 5)); // 递归调用自身
+}
+
+.pt(@counter) {
+  padding-top: unit(@counter, px);
+}
+
+.plfun(@counter) when (@counter < 200) {
+  .pl-@{counter} {
+    padding-left: unit(@counter, px);
+  }
+
+  .plfun((@counter + 5)); // 递归调用自身
+}
+
+.pl(@counter) {
+  padding-left: unit(@counter, px);
+}
+
+.prfun(@counter) when (@counter < 200) {
+  .pr-@{counter} {
+    padding-right: unit(@counter, px);
+  }
+
+  .prfun((@counter + 5)); // 递归调用自身
+}
+
+.pr(@counter) {
+  padding-right: unit(@counter, px);
+}
+
+.pbfun(@counter) when (@counter < 200) {
+  .pb-@{counter} {
+    padding-bottom: unit(@counter, px);
+  }
+
+  .pbfun((@counter + 5)); // 递归调用自身
+}
+
+.pb(@counter) {
+  padding-bottom: unit(@counter, px);
+}
+
+.plr(@counter) {
+  .pl(@counter);
+  .pr(@counter);
+}
+
+.flexcenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexrow() {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.flexcolumn() {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.flexavg() {
+  align-items: space-between;
+  justify-content: space-between;
+}
+
+.absolute(@b, @bottom: bottom) {
+  position: absolute;
+  @{bottom}: @b;
+}
+
+.fixed(@b, @bottom: bottom) {
+  position: absolute;
+  @{bottom}: @b;
+}
