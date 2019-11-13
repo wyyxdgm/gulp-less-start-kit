@@ -52,7 +52,7 @@ const cleanFiles = (fileList) => {
 let buildStyle = _.throttle((src, needCssmin, base, dist) => {
   let line;
   console.log('buildStyle', src);
-  line = gulp.src(['src/css/*.css'].concat(src), {
+  line = gulp.src(['src/css/*.css'], {
     base: base || "src/css"
   });
   line = line.pipe(less())
