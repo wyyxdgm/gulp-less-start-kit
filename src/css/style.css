@@ -21,6 +21,136 @@ body {
   }
 }
 
+/* 菜单 */
+
+
+
+.header-area {
+  padding: 61px 53px 67px;
+  .flexrow();
+
+  .nav-padding-bottom {
+    .pb(45);
+    border-bottom: 1px solid rgba(212, 212, 212, 1);
+
+    &.active {
+      .pb(44);
+      border-bottom: 2px solid rgba(0, 0, 0, 1);
+    }
+  }
+
+
+  .nav-brand-left {
+    width: 180px;
+    .flexrow();
+    .flexavg();
+
+    .brand-left {
+      img {
+        width: 35.4px;
+        height: 44px;
+      }
+    }
+
+    .brand-right {
+      flex: 1;
+      .pl(18);
+      .flexcolumn();
+      .flexavg();
+
+      .title-t {
+        height: 12px;
+        font-size: 16px;
+        font-family: Gill Sans;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 1);
+        line-height: 16px;
+      }
+
+      .title-b {
+        .flexrow();
+        .flexavg();
+        height: 14px;
+        font-size: 14px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+        line-height: 14px;
+        .mt(12);
+
+        img.position-icon {
+          float: right;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+
+  nav.nav-menu-container {
+    .ml(92);
+
+    ul {
+      width: unit(124*2+723, px);
+      .flexrow();
+      .flexavg();
+
+      li.menu-item {
+
+        .nav-block {
+          width: 124px;
+          height: 44px;
+          .flexcolumn();
+          .flexavg();
+
+          .t-link {
+            height: 12px;
+            line-height: 12px;
+
+            a {
+              line-height: 12px;
+              font-size: 16px;
+              font-family: Gill Sans;
+              font-weight: 600;
+              color: rgba(0, 0, 0, 1);
+            }
+          }
+
+          .b-link {
+            height: 14px;
+            line-height: 14px;
+
+            a {
+              line-height: 14px;
+              font-size: 14px;
+              font-family: PingFang SC;
+              font-weight: 500;
+              color: rgba(0, 0, 0, 1);
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+
+  .nav-brand-right {
+    min-width: 287.2px;
+    height: 22.7px;
+    flex: 1;
+    text-align: right;
+    align-self: flex-start;
+    justify-self: flex-end;
+
+    img {
+      width: 287.2px;
+      height: 22.7px;
+    }
+  }
+
+}
+
 .section-footer {
   .copyright {
     height: 19px;

@@ -5,3 +5,7 @@
 
 @nav-bg-clolor: rgba(0, 0, 0, 0.8);
 @nav-title-bg-color: rgba(0, 0, 0, .3);
+
+.bgc(){
+	background: #ddd;
+}
