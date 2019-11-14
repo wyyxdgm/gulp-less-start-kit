@@ -103,7 +103,7 @@ gulp.task('watchcss', function() {
       var paths = watchPath(event, `src/i18n/${lang}/css`, `dist/i18n/${lang}/css`)
       gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
       gutil.log('Dist ' + paths.distPath)
-      buildStyle(['src/css/*.css', paths.srcPath], `src/i18n/${lang}/css`, `i18n/${lang}/css`);
+      buildStyle(['src/css/*.css'], CONFIG.minCss, `src/i18n/${lang}/css`, `i18n/${lang}/css`);
     })
   });
 
