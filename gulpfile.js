@@ -57,7 +57,7 @@ let buildStyle = _.throttle((src, needCssmin, base, dist) => {
   });
   line = line.pipe(less())
   line = line.pipe(postcss([autoprefixer(['iOS >= 8', 'Android >= 4.1', 'last 5 versions'])]));
-  line = line.pipe(concatCss('style.css'))
+  line = line.pipe(concatCss('style.css'));
   if (needCssmin) line = line.pipe(cssminify());
   line = line.pipe(rename(function(path) {
     path.extname = '.css';
@@ -112,7 +112,7 @@ gulp.task('watchcss', function() {
 gulp.task('css', function() {
   buildStyle('src/css/*.css', CONFIG.minCss);
   Object.keys(CONFIG.i18n).forEach((lang) => {
-    buildStyle(['src/css/*.css', `src/i18n/${lang}/css/*.css`], `src/i18n/${lang}/css`, `i18n/${lang}/css`);
+    buildStyle(['src/css/*.css', `src/i18n/${lang}/css/*.css`], CONFIG.minCss, `src/i18n/${lang}/css`, `i18n/${lang}/css`);
   });
 });
 
@@ -132,7 +132,8 @@ gulp.task('serve', function() {
 gulp.task('clean', () => cleanFiles('dist/'));
 
 gulp.task('watchcopy', function() {
-  gulp.watch(['src/fonts/**',
+  gulp.watch([
+    'src/fonts/**',
     'src/files/**',
     'src/img/**',
     'src/video/**',
@@ -140,6 +141,17 @@ gulp.task('watchcopy', function() {
     'src/robots.txt'
   ], function(event) {
     var paths = watchPath(event, 'src/', 'dist/')
+
+    gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
+    gutil.log('Dist ' + paths.distPath)
+
+    gulp.src(paths.srcPath)
+      .pipe(gulp.dest(paths.distDir))
+  })
+  gulp.watch([
+    'oss/**'
+  ], function(event) {
+    var paths = watchPath(event, 'oss/', 'dist/')
 
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath)
@@ -167,6 +179,10 @@ gulp.task('copy', function() {
       'src/i18n/**/js/**'
     ], {
       base: 'src/'
+    })
+    .pipe(gulp.dest('dist/'))
+  gulp.src(['oss/**'], {
+      base: 'oss/'
     })
     .pipe(gulp.dest('dist/'))
 });
