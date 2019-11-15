@@ -38,5 +38,5 @@ module.exports = {
 	"dist": "dist",
 	"minCss": false,
 	"useChanged": false,
-	"log_level": 1
+	"log_level": 2
 }
