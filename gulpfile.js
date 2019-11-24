@@ -205,7 +205,7 @@ gulp.task('watchhtml', function(cb) {
     gutil.log('Dist ' + paths.distPath)
     buildPages(paths.distPath.replace('dist/', '').replace('.html', ''))
   })
-  gulp.watch(['src/pages/template/*.html'], ['build:html'], function(event) {
+  gulp.watch(['src/pages/template/*.html'], gulp.series('build:html'), function(event) {
     var paths = watchPath(event, 'src/pages/template/', 'dist/')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath)
