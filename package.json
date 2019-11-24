@@ -1,7 +1,7 @@
 {
-  "name": "zhangyuzhikong",
-  "version": "1.0.0",
-  "description": "zhangyuzhikong",
+  "name": "nature-website",
+  "version": "0.0.1",
+  "description": "nature-website",
   "main": "index.js",
   "scripts": {
     "test": "echo Error \"no test\"",
@@ -11,21 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wyyxdgm/zhangyuzhikong.git"
+    "url": "git@github.com:wyyxdgm/nature-website.git"
   },
   "keywords": [
-    "zhangyuzhikong"
+    "nature-website"
   ],
   "author": "wyyxdgm@163.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wyyxdgm/zhangyuzhikong/issues"
+    "url": "https://github.com/wyyxdgm/nature-website/issues"
   },
-  "homepage": "https://github.com/wyyxdgm/zhangyuzhikong#readme",
+  "homepage": "https://github.com/wyyxdgm/nature-website#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "ejs": "^2.6.1",
-    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-changed": "^3.2.0",
     "gulp-clean": "^0.4.0",
@@ -51,6 +50,7 @@
   "dependencies": {
     "animate.css": "^3.7.2",
     "animateJs": "^0.1.0",
+    "gulp": "^4.0.2",
     "jquery.scrollto": "^2.1.2",
     "swiper": "^5.1.0",
     "vidbacking": "^2.0.1"
