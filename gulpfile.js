@@ -15,7 +15,9 @@ let autoprefixer = require('autoprefixer');
 let clean = require('gulp-clean');
 let changed = require("gulp-changed");
 var browserSync = require('browser-sync').create();
-let concatCss = require('gulp-concat-css')
+let concatCss = require('gulp-concat-css');
+let watch = require('@jindasong/gulp-watch');
+
 let useChanged = false;
 let CONFIG = require('./config');
 let compile = require('./lib/compile.js')
@@ -35,7 +37,7 @@ gulp.task('build:html', function(cb) {
 })
 
 gulp.task('watchi18n', function(cb) {
-  gulp.watch(['i18n/*.js'], function(event) {
+  watch(['i18n/*.js'], function(event) {
     var paths = watchPath(event, 'i18n', 'i18n');
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath.replace('i18n/', '').replace(/\.\w+$/, '/index.html'));
@@ -79,7 +81,7 @@ gulp.task('watchdev', function(cb) {
   if (!fs.existsSync('lab')) fs.mkdirSync('lab');
   if (!fs.existsSync('lab/src')) fs.mkdirSync('lab/src');
   if (!fs.existsSync('lab/dist')) fs.mkdirSync('lab/dist');
-  gulp.watch(['lab/src/**'], _.throttle(function(event) {
+  watch(['lab/src/**'], _.throttle(function(event) {
     var paths = watchPath(event, 'lab/src/', 'lab/dist/')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     // html
@@ -99,14 +101,14 @@ gulp.task('watchdev', function(cb) {
 });
 
 gulp.task('watchcss', function(cb) {
-  gulp.watch(['src/css/*.css'], function(event) {
+  watch(['src/css/*.css'], function(event) {
     var paths = watchPath(event, 'src/css', 'dist/css')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath)
     buildStyle(paths.srcPath);
   })
   Object.keys(CONFIG.i18n).forEach((lang) => {
-    gulp.watch(['src/css/*.css', `src/i18n/${lang}/css/*.css`], function(event) {
+    watch(['src/css/*.css', `src/i18n/${lang}/css/*.css`], function(event) {
       var paths = watchPath(event, `src/i18n/${lang}/css`, `dist/i18n/${lang}/css`)
       gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
       gutil.log('Dist ' + paths.distPath)
@@ -141,7 +143,7 @@ gulp.task('serve', function(cb) {
 gulp.task('clean', (cb) => cleanFiles('dist/') || cb());
 
 gulp.task('watchcopy', function(cb) {
-  gulp.watch([
+  watch([
     'src/fonts/**',
     'src/files/**',
     'src/img/**',
@@ -157,7 +159,7 @@ gulp.task('watchcopy', function(cb) {
     gulp.src(paths.srcPath)
       .pipe(gulp.dest(paths.distDir))
   })
-  gulp.watch([
+  watch([
     'oss/**'
   ], function(event) {
     var paths = watchPath(event, 'oss/', 'dist/')
@@ -199,13 +201,13 @@ gulp.task('copy', function(cb) {
 });
 
 gulp.task('watchhtml', function(cb) {
-  gulp.watch(['src/pages/*.html'], function(event) {
+  watch(['src/pages/*.html'], function(event) {
     var paths = watchPath(event, 'src/pages/', 'dist/')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath)
-    buildPages(paths.distPath.replace('dist/', '').replace('.html', ''))
+    buildPages(paths.distPath.replace(/dist(\/|\\)/, '').replace('.html', ''))
   })
-  gulp.watch(['src/pages/template/*.html'], gulp.series('build:html'), function(event) {
+  watch(['src/pages/template/*.html'], gulp.series('build:html'), function(event) {
     var paths = watchPath(event, 'src/pages/template/', 'dist/')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist ' + paths.distPath)

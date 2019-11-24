@@ -48,6 +48,7 @@
     "underscore": "^1.9.1"
   },
   "dependencies": {
+    "@jindasong/gulp-watch": "^1.0.0",
     "animate.css": "^3.7.2",
     "animateJs": "^0.1.0",
     "gulp": "^4.0.2",
