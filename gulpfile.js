@@ -152,9 +152,7 @@ gulp.task('watchcopy', function(cb) {
     'src/robots.txt'
   ], function(event) {
     var paths = watchPath(event, 'src/', 'dist/')
-
     gutil.log('copy', paths.srcPath.replace(/\\/g, '/'), paths.distPath.replace(/\\/g, '/'))
-
     gulp.src(paths.srcPath)
       .pipe(gulp.dest(paths.distDir))
   })
