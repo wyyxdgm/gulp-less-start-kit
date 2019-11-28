@@ -1,107 +1,109 @@
+@PX_TO_REM: 1/75;
+
 .mtfun(@counter) when (@counter < 200) {
   .mt-@{counter} {
-    margin-top: unit(@counter, px);
+    margin-top: unit(@counter * @PX_TO_REM, rem);
   }
 
   .mtfun((@counter + 5)); // 递归调用自身
 }
 
 .mt(@counter) {
-  margin-top: unit(@counter, px);
+  margin-top: unit(@counter * @PX_TO_REM, rem);
 }
 
 .mlfun(@counter) when (@counter < 200) {
   .ml-@{counter} {
-    margin-left: unit(@counter, px);
+    margin-left: unit(@counter * @PX_TO_REM, rem);
   }
 
   .mlfun((@counter + 5)); // 递归调用自身
 }
 
 .ml(@counter) {
-  margin-left: unit(@counter, px);
+  margin-left: unit(@counter * @PX_TO_REM, rem);
 }
 
 .mrfun(@counter) when (@counter < 200) {
   .mr-@{counter} {
-    margin-right: unit(@counter, px);
+    margin-right: unit(@counter * @PX_TO_REM, rem);
   }
 
   .mrfun((@counter + 5)); // 递归调用自身
 }
 
 .mr(@counter) {
-  margin-right: unit(@counter, px);
+  margin-right: unit(@counter * @PX_TO_REM, rem);
 }
 
 .mbfun(@counter) when (@counter < 200) {
   .mb-@{counter} {
-    margin-bottom: unit(@counter, px);
+    margin-bottom: unit(@counter * @PX_TO_REM, rem);
   }
 
   .mbfun((@counter + 5)); // 递归调用自身
 }
 
 .mb(@counter) {
-  margin-bottom: unit(@counter, px);
-}
-
-.ma() {
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: unit(@counter * @PX_TO_REM, rem);
 }
 
 .ptfun(@counter) when (@counter < 200) {
   .pt-@{counter} {
-    padding-top: unit(@counter, px);
+    padding-top: unit(@counter * @PX_TO_REM, rem);
   }
 
   .ptfun((@counter + 5)); // 递归调用自身
 }
 
 .pt(@counter) {
-  padding-top: unit(@counter, px);
+  padding-top: unit(@counter * @PX_TO_REM, rem);
 }
 
 .plfun(@counter) when (@counter < 200) {
   .pl-@{counter} {
-    padding-left: unit(@counter, px);
+    padding-left: unit(@counter * @PX_TO_REM, rem);
   }
 
   .plfun((@counter + 5)); // 递归调用自身
 }
 
 .pl(@counter) {
-  padding-left: unit(@counter, px);
+  padding-left: unit(@counter * @PX_TO_REM, rem);
 }
 
 .prfun(@counter) when (@counter < 200) {
   .pr-@{counter} {
-    padding-right: unit(@counter, px);
+    padding-right: unit(@counter * @PX_TO_REM, rem);
   }
 
   .prfun((@counter + 5)); // 递归调用自身
 }
 
 .pr(@counter) {
-  padding-right: unit(@counter, px);
+  padding-right: unit(@counter * @PX_TO_REM, rem);
 }
 
 .pbfun(@counter) when (@counter < 200) {
   .pb-@{counter} {
-    padding-bottom: unit(@counter, px);
+    padding-bottom: unit(@counter * @PX_TO_REM, rem);
   }
 
   .pbfun((@counter + 5)); // 递归调用自身
 }
 
 .pb(@counter) {
-  padding-bottom: unit(@counter, px);
+  padding-bottom: unit(@counter * @PX_TO_REM, rem);
 }
 
 .plr(@counter) {
   .pl(@counter);
   .pr(@counter);
+}
+
+.mlr(@counter) {
+  .ml(@counter);
+  .mr(@counter);
 }
 
 .flexcenter() {
@@ -146,17 +148,17 @@
 }
 
 .fs(@px) {
-  font-size: unit(@px, px);
+  font-size: unit(@px * @PX_TO_REM, rem);
 }
 
 /*----- 宽度 -----*/
 .w(@px) {
-  width: unit(@px, px);
+  width: unit(@px * @PX_TO_REM, rem);
 }
 
 /*----- 高度 -----*/
 .h(@px) {
-  height: unit(@px, px);
+  height: unit(@px * @PX_TO_REM, rem);
 }
 
 .wh(@px) {
@@ -166,11 +168,15 @@
 
 /*----- 行高 -----*/
 .lh(@px) {
-  line-height: unit(@px, px);
+  line-height: unit(@px * @PX_TO_REM, rem);
+}
+
+.px2rem(@px) {
+  unit(@px * @PX_TO_REM, rem);
 }
 
 .bottom(@px) {
-  bottom: unit(@px, px);
+  bottom: unit(@px * @PX_TO_REM, rem);
 }
 
 .txt() {
@@ -189,7 +195,6 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .letterspacing(@fs, @sp) {
-  letter-spacing: unit(@fs * @sp /1000, px);
+  letter-spacing: unit(@fs * @sp /1000 * @PX_TO_REM, rem);
 }
