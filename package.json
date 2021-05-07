@@ -45,7 +45,7 @@
     "require-nocache": "^1.0.0",
     "sftp-sync-deploy": "^0.7.1",
     "stream-combiner2": "^1.1.1",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   },
   "dependencies": {
     "@jindasong/gulp-watch": "^1.0.0",
