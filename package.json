@@ -53,7 +53,7 @@
     "animateJs": "^0.1.0",
     "gulp": "^4.0.2",
     "jquery.scrollto": "^2.1.2",
-    "swiper": "^5.1.0",
+    "swiper": "^6.5.1",
     "vidbacking": "^2.0.1"
   }
 }
